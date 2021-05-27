@@ -11,9 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      // 1 a muchos
       Pasajero.belongsTo(models.Nave, {
         foreignKey: 'naveId'
       });
+      // relación 1 a 1 
+      Pasajero.hasOne(models.Curriculum, {
+        foreignKey: 'idPasajero'
+      })
     }
   };
   Pasajero.init({
