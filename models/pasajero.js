@@ -19,6 +19,13 @@ module.exports = (sequelize, DataTypes) => {
       Pasajero.hasOne(models.Curriculum, {
         foreignKey: 'idPasajero'
       })
+      // relacion muchos a muchos
+      Pasajero.belongsTo(models.Alien, {
+        through: 'PasajeroAlien',
+        as: 'aliens',
+        foreignKey: 'idPasajero',
+        otherKey: 'idAlien'
+      })
     }
   };
   Pasajero.init({
